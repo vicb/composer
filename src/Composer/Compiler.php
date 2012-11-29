@@ -84,6 +84,7 @@ class Compiler
             ->in(__DIR__.'/../../vendor/symfony/')
             ->in(__DIR__.'/../../vendor/seld/jsonlint/src/')
             ->in(__DIR__.'/../../vendor/justinrainbow/json-schema/src/')
+            ->in(__DIR__.'/../../vendor/jms/php-manipulator/src/')
         ;
 
         foreach ($finder as $file) {

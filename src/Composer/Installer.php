@@ -231,6 +231,11 @@ class Installer
             $localRepos = new CompositeRepository($this->repositoryManager->getLocalRepositories());
             $this->autoloadGenerator->dump($this->config, $localRepos, $this->package, $this->installationManager, 'composer', $this->optimizeAutoloader);
 
+            $this->io->write('<info>Generating bloatware</info>');
+            $vendorDir = $this->config->get('vendor-dir');
+            $deprecationGenerator = new \Composer\Deprecation\DeprecationGenerator();
+            $deprecationGenerator->dump($vendorDir, $vendorDir.'/bloatware');
+
             if ($this->runScripts) {
                 // dispatch post event
                 $eventName = $this->update ? ScriptEvents::POST_UPDATE_CMD : ScriptEvents::POST_INSTALL_CMD;
